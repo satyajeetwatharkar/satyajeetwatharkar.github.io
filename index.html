@@ -1,227 +1,229 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Satyajeet Watharkar — Cybersecurity & Cloud</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Optional: bootstrap icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>Satyajeet's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root{
-      --bg: #0f1724;
-      --card:#0b1220;
-      --text:#e6eef8;
-      --muted:#99a3b2;
-      --accent:#3b82f6;
+    /* Default (Light Mode) */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #222;
+      --card-bg: #f5f5f5;
+      --accent: #6a0dad;   /* Purple */
+      --accent-2: #008080; /* Teal */
     }
-    html,body { height:100%; background: linear-gradient(180deg,#071029 0%, #081426 60%); color:var(--text); font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;}
-    a { color:var(--accent); text-decoration: none;}
-    .nav-link { color: var(--text) !important; }
-    .hero {
-      padding:6rem 0;
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --accent: #bb86fc;
+      --accent-2: #03dac6;
     }
-    .card-ghost {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.04);
-      color: var(--text);
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.4s, color 0.4s;
     }
-    .skill-badge { margin:4px 6px 4px 0; display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,0.04); color:var(--muted); font-size:0.9rem; }
-    footer { padding:2rem 0; color:var(--muted); text-align:center; }
-    .btn-outline-light { border-color: rgba(255,255,255,0.12); color:var(--text); }
-    /* small responsive tweaks */
-    @media (max-width:767px){ .hero { padding:3rem 0; } }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+
+    /* Toggle Button */
+    #theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--text-color);
+      font-size: 1.2rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+    #theme-toggle:hover {
+      transform: rotate(20deg);
+      background: var(--accent-2);
+      color: #fff;
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--accent);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 12px var(--accent-2);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 14px var(--accent);
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 15px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      background: var(--accent-2);
+      box-shadow: 0 0 10px var(--accent-2);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    footer a:hover {
+      color: yellow;
+      transform: scale(1.2);
+    }
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Satyajeet Watharkar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item ms-3">
-            <a class="btn btn-sm btn-outline-light" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-              <i class="bi bi-file-earmark-text"></i> Resume
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container">
-      <div class="row align-items-center gy-4">
-        <div class="col-lg-7">
-          <h1 class="display-5 fw-bold">Hi — I'm <span class="text-primary">Satyajeet Watharkar</span></h1>
-          <p class="lead text-muted">MEng Cybersecurity @ UMD · Cloud Security · SOC · Security Automation</p>
-          <div class="mt-3">
-            <a href="/resume.pdf" class="btn btn-primary btn-lg me-2" target="_blank" rel="noopener noreferrer">Download Resume</a>
-            <a href="https://github.com/REPLACE_WITH_GITHUB" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">
-              <i class="bi bi-github"></i> GitHub
-            </a>
-            <a href="https://linkedin.com/in/REPLACE_WITH_LINKEDIN" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg ms-2">
-              <i class="bi bi-linkedin"></i> LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-5 text-center">
-          <!-- avatar placeholder -->
-          <div class="card card-ghost p-3 mx-auto" style="max-width:260px;">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=facearea&facepad=2" alt="Your avatar" class="rounded-circle img-fluid mb-3" style="width:160px;height:160px;object-fit:cover;">
-            <div>
-              <p class="mb-1 fw-bold">Satyajeet W.</p>
-              <p class="text-muted small mb-0">Cloud Security • Automation • NOC</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <header>
+    <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+    <h1>Satyajeet Watharkar</h1>
+    <p>Technology Enthusiast | Cybersecurity Engineer | Lifelong Learner</p>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="py-5">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-8">
-          <h3>About</h3>
-          <p class="text-muted">I have ~4 years experience in cloud infrastructure, storage & backup, and network monitoring (Wintel, RHEL, NetBackup, vCenter, Splunk). Currently studying MEng in Cybersecurity at UMD and focused on cloud security and security automation. I enjoy building tools that reduce toil and make environments safer.</p>
-          <ul>
-            <li class="text-muted">Hands-on: AWS, Azure basics, Splunk, Palo Alto, ServiceNow</li>
-            <li class="text-muted">Languages: Java, Python</li>
-            <li class="text-muted">Certs: Google Cybersecurity Professional, Cisco Network Security, Palo Alto Foundation</li>
-          </ul>
-        </div>
-        <div class="col-lg-4">
-          <div class="card card-ghost p-3">
-            <h5 class="mb-3">Quick facts</h5>
-            <div><strong>Location:</strong> College Park, MD / moving to US</div>
-            <div><strong>Focus:</strong> Cloud Security, SOC, DevSecOps</div>
-            <div><strong>Open to:</strong> On-campus roles & internships</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="py-5 bg-transparent">
-    <div class="container">
-      <h3 class="mb-4">Selected projects</h3>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card card-ghost p-3 h-100">
-            <h5>AWS S3 Security Scanner</h5>
-            <p class="text-muted mb-2">Python tool to enumerate and flag public/misconfigured S3 buckets, outputs CSV and quick remediation tips.</p>
-            <div class="mt-auto">
-              <a href="https://github.com/REPLACE_WITH_GITHUB/aws-s3-scanner" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-light">View repo</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card card-ghost p-3 h-100">
-            <h5>Network Monitoring Dashboard</h5>
-            <p class="text-muted mb-2">Automated reporting & alerts using Splunk queries + ServiceNow integration for incident creation.</p>
-            <a href="https://github.com/REPLACE_WITH_GITHUB/network-monitoring" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-light">View repo</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="py-5">
-    <div class="container">
-      <h3>Experience</h3>
-      <div class="timeline mt-4">
-        <div class="card card-ghost p-3 mb-3">
-          <h6 class="mb-1">Capgemini — Storage & Backup SME</h6>
-          <small class="text-muted">2021 – 2024</small>
-          <ul class="mt-2 text-muted">
-            <li>Managed 500+ servers across Windows & RHEL, automated reporting and maintained 100% SLA compliance.</li>
-            <li>Built automated dashboards and incident runbooks.</li>
-          </ul>
-        </div>
-
-        <div class="card card-ghost p-3">
-          <h6 class="mb-1">Entergy USA — NOC Team Lead</h6>
-          <small class="text-muted">2024 – 2025</small>
-          <ul class="mt-2 text-muted">
-            <li>Led day-to-day operations for network monitoring, handled client communication, and improved incident MTTR.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="py-5 bg-transparent">
-    <div class="container">
-      <h3>Skills</h3>
-      <div class="mt-3">
-        <span class="skill-badge">Java</span>
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">AWS (S3, IAM)</span>
-        <span class="skill-badge">Splunk</span>
-        <span class="skill-badge">Palo Alto</span>
-        <span class="skill-badge">ServiceNow</span>
-        <span class="skill-badge">Linux / Windows Server</span>
-        <span class="skill-badge">Security Automation</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="py-5">
-    <div class="container">
-      <h3>Contact</h3>
-      <p class="text-muted">Want to collaborate, hire, or chat? Reach out via:</p>
-      <p>
-        <a href="mailto:your.email@example.com" class="me-3"><i class="bi bi-envelope-fill"></i> your.email@example.com</a>
-        <a href="https://linkedin.com/in/REPLACE_WITH_LINKEDIN" target="_blank" rel="noopener noreferrer" class="me-3"><i class="bi bi-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/REPLACE_WITH_GITHUB" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a>
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      I’m a curious and passionate technology enthusiast currently pursuing my Master’s in Cybersecurity. I love exploring how technology can be leveraged to create real-world impact and solve meaningful problems. Coffee fuels my creativity, and I thrive on working on exciting projects with people who share the same drive and passion for innovation.
       </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">🔐 Cybersecurity: Vulnerability Mgmt, SOC, Threat Hunting, Incident Response, Identity & Access Management (IAM) </div>
+      <div class="skill-card">☁️ Cloud Security: AWS, Azure, GCP</div>
+      <div class="skill-card">🌐 Networking: Firewalls & Network Security, VPN & Remote Access Security, Endpoint Protection</div>
+      <div class="skill-card">💻 OS: Windows Server, Linux </div>
+      <div class="skill-card">📜 Programming: Java, Python, C, Bash</div>
+      <div class="skill-card">🛠 Tools: Splunk, ELK Stack,Qualys, Nessus, Nexpose, Tenable, Wireshark, Nmap, Metasploit, Burp Suite</div>
     </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Healthcare Data management using Blockchain</h3>
+        <p>Designed and deployed a blockchain-based electronic health record system.</p>
+        <a class="btn" href="https://github.com/satyajeetwatharkar/Hospital-record-management-using-blockchain." target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>AWS-MFA-CHECKER</h3>
+        <p>A Python tool to enforce MFA compliance across AWS accounts and check compliance.</p>
+        <a class="btn" href="https://github.com/satyajeetwatharkar/AWS-MFA-CHECKER" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Cloud-Sentinel</h3>
+        <p>A Python toolkit for scanning and auditing cloud infrastructure for misconfigurations.</p>
+        <a class="btn" href="https://github.com/satyajeetwatharkar/Cloud-Sentinel-" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Section -->
+  <section id="current-work">
+    <h2>What I'm Currently Working On</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+      I’m currently focused on enhancing my skills in Cloud Security and Security Automation.  
+      My main projects involve securing AWS environments, building DevSecOps pipelines,  
+      and exploring automation techniques to improve security monitoring and response.
+    </p>
   </section>
 
   <footer>
-    <div class="container">
-      <small>© <span id="year"></span> Satyajeet Watharkar · Built with Bootstrap · Hosted on GitHub Pages</small>
-    </div>
+    <p>Connect with me</p>
+    <a href="mailto:swathark@umd.edu"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/satyajeetwatharkar" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/satyajeetwatharkar/" target="_blank"><i class="fab fa-linkedin"></i></a>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    // small helpers
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // smooth scroll for internal links
-    document.querySelectorAll('a.nav-link[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
-        // collapse mobile menu
-        const bsCollapse = bootstrap.Collapse.getInstance(document.querySelector('.navbar-collapse'));
-        if(bsCollapse) bsCollapse.hide();
-      });
+    const toggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      toggleBtn.innerHTML = body.classList.contains("dark") 
+        ? '<i class="fas fa-sun"></i>' 
+        : '<i class="fas fa-moon"></i>';
     });
   </script>
 </body>
